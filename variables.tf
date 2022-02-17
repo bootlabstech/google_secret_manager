@@ -6,7 +6,43 @@ variable "secret_id" {
 }
 
 variable "location" {
-  description = "Describes the Cloud KMS encryption key that will be used to protect destination secret."
+  description = <<-EOT
+    {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data":[ "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4"
+    ],
+   "description":"location"
+}
+  EOT
   type        = string
 }
 
@@ -35,7 +71,6 @@ variable "member" {
   type        = string
 }
 
-
 variable "role" {
   description = "The Duration between rotation notifications."
   type        = string
@@ -49,10 +84,18 @@ variable "secret_data" {
 //optional variables
 
 variable "automatic" {
-  description = "The Secret will automatically be replicated without any restrictions."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+            ],
+   "description": "The Secret will automatically be replicated without any restrictions."
+}
+EOT
   type        = bool
   default     = true
-
 }
 
 variable "lables" {
@@ -85,9 +128,17 @@ variable "rotation_period" {
   default     = "2592000s"
 }
 
-
 variable "enabled" {
-  description = " The current state of the SecretVersion."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+            ],
+   "description": " The current state of the SecretVersion."
+}
+EOT
   type        = bool
   default     = false
 }
